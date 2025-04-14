@@ -47,7 +47,7 @@ fun GameScreen() {
             .background(Color(android.graphics.Color.parseColor("#B3E5FC"))),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        // לבבות
+        // hearts
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -67,7 +67,7 @@ fun GameScreen() {
             }
         }
 
-        // אזור המשחק
+        // Game area
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
@@ -80,7 +80,7 @@ fun GameScreen() {
 
             val laneWidth = maxWidth / 3
 
-            // טיפות גשם חדשות
+            // New raindrops
             LaunchedEffect(isGameOver) {
                 if (!isGameOver) {
                     while (true) {
@@ -91,7 +91,7 @@ fun GameScreen() {
                 }
             }
 
-            // הזזת טיפות + בדיקת התנגשות
+            // Droplet movement + collision check
             LaunchedEffect(isGameOver) {
                 if (!isGameOver) {
                     while (true) {
@@ -118,7 +118,7 @@ fun GameScreen() {
                 }
             }
 
-            // ציור טיפות
+            // Drawing drops
             raindrops.forEach { drop ->
                 Box(
                     modifier = Modifier
@@ -132,7 +132,7 @@ fun GameScreen() {
                 }
             }
 
-            // ציור הפיה
+            // Fairy painting
             if (!isGameOver) {
                 Box(
                     modifier = Modifier
@@ -149,7 +149,7 @@ fun GameScreen() {
                 }
             }
 
-            // מסך GAME OVER
+            //  GAME OVER
             if (isGameOver) {
                 Box(
                     modifier = Modifier
@@ -175,7 +175,7 @@ fun GameScreen() {
             }
         }
 
-        // כפתורי שליטה
+        // Control buttons
         Row(
             modifier = Modifier
                 .fillMaxWidth()
