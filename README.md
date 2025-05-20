@@ -24,17 +24,17 @@
 
 - ## 📂 Project Structure
 
-| `MainActivity.kt` | App launcher and screen controller |
-| `GameScreen.kt` | Main gameplay screen |
-| `StartScreen.kt` | Opening screen with mode selection |
-| `SpeedOptionsScreen.kt` | Speed mode selector (Slow / Fast) |
+| MainActivity.kt | App launcher and screen controller |
+| GameScreen.kt | Main gameplay screen |
+| StartScreen.kt | Opening screen with mode selection |
+| SpeedOptionsScreen.kt | Speed mode selector (Slow / Fast) |
 |  HighScore.kt	|Data class representing a high score entry including score, coins, location and timestamp|
-| `HighScoresScreen.kt` | Scoreboard only |
-| `HighScoresWithMapScreen.kt` | Scoreboard + Map (split view) |
-| `HighScoreManager.kt` | Handles saving & loading scores |
-| `MapViewSection.kt` | Google Maps integration |
+| HighScoresScreen.kt | Scoreboard only |
+| HighScoresWithMapScreen.kt | Scoreboard + Map (split view) |
+| HighScoreManager.kt | Handles saving & loading scores |
+| MapViewSection.kt | Google Maps integration |
 |  MapScreen.kt	| Used if you want to show only the map with location (optional)
-| `Constants.kt` | Game constants and configuration |
+| Constants.kt | Game constants and configuration |
 |  GameUtils.kt	| Contains helper functions like vibration or toast display|
 |  Raindrop.kt	| Data class representing a raindrop (position, speed)|
 |  coin.kt	| Data class representing a coin (lane, position)|
