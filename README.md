@@ -42,6 +42,7 @@
 
 ## 📸 Screenshots
 
+https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/bacfa205-ae72-41bc-95d3-4ad7e25c5e15.jpeg?raw=true
 
 
 
