@@ -44,6 +44,7 @@
 
 https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/bacfa205-ae72-41bc-95d3-4ad7e25c5e15.jpeg?raw=true
 
+https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/35a68985-5e00-4201-a573-1fb1982d2e8e.jpeg?raw=true
 
 
 
