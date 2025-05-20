@@ -42,9 +42,14 @@
 
 ## 📸 Screenshots
 
-![Gameplay](https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/bacfa205-ae72-41bc-95d3-4ad7e25c5e15.jpeg?raw=true)
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/21d5fefe-82cf-4a28-968a-8275a0b1f4b8.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/35a68985-5e00-4201-a573-1fb1982d2e8e.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/3b2b4e1b-6036-43aa-a482-0d7c9cdd5d26.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/52d07547-4638-4073-a9d1-2e4b8ada8619.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/5bc26af9-1c05-438a-b186-5f3559aa3a10.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/638a3354-9d2d-4ae9-aaf0-d45e557e1094.jpeg?raw=true" width="300"/>  
+<img src="https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/bacfa205-ae72-41bc-95d3-4ad7e25c5e15.jpeg?raw=true" width="300"/>
 
-![Map View](https://github.com/LusiaRuvinski/fairy-rain-game/blob/master/35a68985-5e00-4201-a573-1fb1982d2e8e.jpeg?raw=true)
 
 
 
