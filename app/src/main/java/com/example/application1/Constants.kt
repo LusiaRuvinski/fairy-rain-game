@@ -1,8 +1,9 @@
 package com.example.application1
 
 object Constants {
+    const val NUM_LANES = 5
     const val START_LIVES = 3
-    const val START_LANE = 1
+    const val START_LANE = NUM_LANES / 2
     const val BACKGROUND_COLOR = "#B3E5FC"
 
     const val DROP_INTERVAL_MS = 1000L
@@ -12,4 +13,5 @@ object Constants {
 
     const val FAIRY_HEIGHT = 120f
     const val FAIRY_BOTTOM_PADDING = 80f
+
 }

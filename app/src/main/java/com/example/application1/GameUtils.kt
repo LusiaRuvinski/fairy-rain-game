@@ -6,7 +6,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.widget.Toast
-
+import android.media.MediaPlayer
 fun ToastWithVibration(context: Context) {
     Toast.makeText(context, "Hit by a raindrop!", Toast.LENGTH_SHORT).show()
 
@@ -22,5 +22,11 @@ fun ToastWithVibration(context: Context) {
     } else {
         @Suppress("DEPRECATION")
         vibrator.vibrate(300)
+    }
+}
+fun playCrashSound(context: Context) {
+    MediaPlayer.create(context, R.raw.crash_sound)?.apply {
+        setOnCompletionListener { release() }
+        start()
     }
 }
