@@ -14,7 +14,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -25,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.delay
@@ -97,26 +97,29 @@ fun GameScreen(gameMode: GameMode, onBackToMenu: () -> Unit) {
             .background(Color(android.graphics.Color.parseColor(Constants.BACKGROUND_COLOR))),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(painter = painterResource(id = R.drawable.coin), contentDescription = "Coin", modifier = Modifier.size(24.dp))
-                Text(": $collectedCoins", color = Color.Black, modifier = Modifier.padding(start = 4.dp, end = 16.dp))
-                Text("Distance: $distance", color = Color.Black)
-            }
-            Row {
-                repeat(Constants.START_LIVES) { index ->
-                    if (index < lives) {
-                        Image(
-                            painter = painterResource(id = R.drawable.heart_full),
-                            contentDescription = "Heart",
-                            modifier = Modifier.size(32.dp).padding(4.dp)
-                        )
+
+        if (!isGameOver) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(painter = painterResource(id = R.drawable.coin), contentDescription = "Coin", modifier = Modifier.size(24.dp))
+                    Text(": $collectedCoins", color = Color.Black, modifier = Modifier.padding(start = 4.dp, end = 16.dp))
+                    Text("Distance: $distance", color = Color.Black)
+                }
+                Row {
+                    repeat(Constants.START_LIVES) { index ->
+                        if (index < lives) {
+                            Image(
+                                painter = painterResource(id = R.drawable.heart_full),
+                                contentDescription = "Heart",
+                                modifier = Modifier.size(32.dp).padding(4.dp)
+                            )
+                        }
                     }
                 }
             }
@@ -130,13 +133,12 @@ fun GameScreen(gameMode: GameMode, onBackToMenu: () -> Unit) {
             val laneWidth = maxWidth / Constants.NUM_LANES
 
             val moveInterval = Constants.MOVE_INTERVAL_MS
-
-
             val dropSpeed = when (gameMode) {
                 GameMode.BUTTONS_SLOW -> Constants.DROP_SPEED * 1f
                 GameMode.BUTTONS_FAST -> Constants.DROP_SPEED * 3f
                 else -> Constants.DROP_SPEED * 1f
             }
+
 
             LaunchedEffect(isGameOver) {
                 if (!isGameOver) {
@@ -155,6 +157,7 @@ fun GameScreen(gameMode: GameMode, onBackToMenu: () -> Unit) {
                     }
                 }
             }
+
 
             LaunchedEffect(isGameOver) {
                 if (!isGameOver) {
@@ -221,17 +224,18 @@ fun GameScreen(gameMode: GameMode, onBackToMenu: () -> Unit) {
                 }
             }
 
-            raindrops.forEach { drop ->
-                Box(modifier = Modifier.offset(x = laneWidth * drop.lane, y = drop.y.dp)) {
-                    Image(painter = painterResource(id = R.drawable.raindrop), contentDescription = "Raindrop", modifier = Modifier.size(Constants.DROP_SIZE.dp))
-                }
-            }
-            coins.forEach { coin ->
-                Box(modifier = Modifier.offset(x = laneWidth * coin.lane, y = coin.y.dp)) {
-                    Image(painter = painterResource(id = R.drawable.coin), contentDescription = "Coin", modifier = Modifier.size(Constants.DROP_SIZE.dp))
-                }
-            }
+
             if (!isGameOver) {
+                raindrops.forEach { drop ->
+                    Box(modifier = Modifier.offset(x = laneWidth * drop.lane, y = drop.y.dp)) {
+                        Image(painter = painterResource(id = R.drawable.raindrop), contentDescription = "Raindrop", modifier = Modifier.size(Constants.DROP_SIZE.dp))
+                    }
+                }
+                coins.forEach { coin ->
+                    Box(modifier = Modifier.offset(x = laneWidth * coin.lane, y = coin.y.dp)) {
+                        Image(painter = painterResource(id = R.drawable.coin), contentDescription = "Coin", modifier = Modifier.size(Constants.DROP_SIZE.dp))
+                    }
+                }
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomStart) {
                     Image(
                         painter = painterResource(id = R.drawable.fairy_no_bg),
@@ -242,17 +246,22 @@ fun GameScreen(gameMode: GameMode, onBackToMenu: () -> Unit) {
                     )
                 }
             }
+
+
             if (isGameOver) {
                 Box(modifier = Modifier.fillMaxSize().background(Color(0xAA000000)), contentAlignment = Alignment.Center) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Game Over 😵", color = Color.White, modifier = Modifier.padding(16.dp))
+                        Text(" Game Over 😵", color = Color.White, fontSize = 28.sp, modifier = Modifier.padding(16.dp))
+                        Text("Your score: $distance", color = Color.White, fontSize = 20.sp)
+                        Spacer(modifier = Modifier.height(16.dp))
                         Button(onClick = { onBackToMenu() }) { Text("Back to Menu") }
                     }
                 }
             }
         }
 
-        if (gameMode == GameMode.BUTTONS || gameMode == GameMode.BUTTONS_SLOW || gameMode == GameMode.BUTTONS_FAST) {
+
+        if (!isGameOver && (gameMode == GameMode.BUTTONS || gameMode == GameMode.BUTTONS_SLOW || gameMode == GameMode.BUTTONS_FAST)) {
             Row(
                 modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
